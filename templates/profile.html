@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #f0f2f5;">
+
+    {% include 'navbar.html' %}
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Your Profile</h5>
+            </div>
+            <div class="card-body">
+                <!-- Display user data -->
+                <h6><strong>Username: </strong>{{ user.username }}</h6>
+                <h6><strong>Email: </strong>{{ user.email }}</h6>
+                <h6><strong>Phone Number: </strong>{{ user.phone_number }}</h6>
+                
+                <form method="POST" action="/users/phonenumber/{{ user.id }}" class="mt-4">
+                    <input type="hidden" name="_method" value="PUT">  <!-- هنا بنخلي الفورم تبعت PUT -->
+                    <div class="form-group">
+                        <label for="phone_number">رقم التليفون الجديد</label>
+                        <input type="text" id="phone_number" name="phone_number" class="form-control" value="{{ user.phone_number }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">تحديث رقم التليفون</button>
+                </form>
+             <!-- Form for changing password -->
+<form method="POST" action="/users/password" class="mt-4">
+    <div class="form-group">
+        <label for="password">Current Password</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="new_password">New Password</label>
+        <input type="password" id="new_password" name="new_password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-warning mt-3">Change Password</button>
+</form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

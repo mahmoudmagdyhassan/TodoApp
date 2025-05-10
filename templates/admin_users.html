@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>كل المستخدمين</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #f0f2f5;">
+
+    {% include 'navbar.html' %}
+
+    <div class="container-fluid mt-5"> 
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">👥 كل المستخدمين</h5>
+            </div>
+            <div class="card-body">
+                {% if users %}
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>email</th>
+                                <th>username </th>
+                                <th>first_name</th>
+                                <th>last_name</th>
+                                <th>role</th>
+                                <th>phone_number </th>
+                                <th>DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for u in users %}
+                            <tr class="{% if u.role == 'admin' %}table-warning{% elif u.role == 'user' %}table-light{% else %}table-secondary{% endif %}">
+                                <td>{{ u.id }}</td>
+                                <td>{{ u.email }}</td>
+                                <td>{{ u.username }}</td>
+                                <td>{{ u.first_name }}</td>
+                                <td>{{ u.last_name }}</td>
+                                <td>{{ u.role or '—' }}</td>
+                                <td>{{ u.phone_number }}</td>
+                                <td>
+                                    <form method="POST" action="/admin/delete_user/{{ u.id }}">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">🗑 DELETE</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted text-center">لا يوجد مستخدمين حالياً.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

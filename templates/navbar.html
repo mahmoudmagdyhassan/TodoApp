@@ -1,0 +1,75 @@
+<div>
+    <nav class="navbar navbar-expand-md navbar-dark main-color fixed-top shadow-sm">
+        <a class="navbar-brand" href="/todos">Todo App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% if user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/todos">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/profile">Profile</a>
+                </li>
+            
+                {% if user.role == "admin" %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/users">Admin Panel</a>
+                </li>
+                {% endif %}
+            
+                {% endif %}
+            </ul>
+            
+
+            <ul class="navbar-nav ml-auto">
+                {% if user %}
+                <li class="nav-item m-1">
+                    <a type="button" class="btn btn-outline-light" href="/auth/logout">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item m-1">
+                    <a type="button" class="btn btn-outline-light" href="/auth/login">Login</a>
+                </li>
+                <li class="nav-item m-1">
+                    <a type="button" class="btn btn-outline-light" href="/auth/register">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<style>
+    .main-color {
+        background-color: #2c3e50;
+    }
+    .navbar-nav .nav-item .nav-link {
+        font-size: 1.1rem;
+        color: #ecf0f1;
+        padding: 0.8rem 1.2rem;
+    }
+    .navbar-nav .nav-item .nav-link:hover {
+        color: #f39c12;
+        text-decoration: underline;
+    }
+    .navbar-nav .nav-item .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+    .navbar-toggler {
+        border: none;
+    }
+    .navbar-toggler-icon {
+        background-color: #ecf0f1;
+    }
+    .shadow-sm {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    body {
+        padding-top: 70px;
+    }
+</style>

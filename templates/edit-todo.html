@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Todo</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body style="background-color: #f8f9fa;">
+
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        Edit Your Todo
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" id="title" value="{{todo.title}}" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control" id="description" rows="3" required>{{todo.description}}</textarea>
+          </div>
+          <div class="form-group">
+            <label for="priority">Priority</label>
+            <select name="priority" class="form-control" id="priority">
+              <option {% if todo.priority == 1 %} selected="selected" {% endif %}>1</option>
+              <option {% if todo.priority == 2 %} selected="selected" {% endif %}>2</option>
+              <option {% if todo.priority == 3 %} selected="selected" {% endif %}>3</option>
+              <option {% if todo.priority == 4 %} selected="selected" {% endif %}>4</option>
+              <option {% if todo.priority == 5 %} selected="selected" {% endif %}>5</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Edit Your Todo</button>
+          <button onclick="window.location.href='/todos/delete/{{todo.id}}'" type="button" class="btn btn-danger mt-3">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

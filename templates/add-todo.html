@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Todo</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body style="background-color: #f8f9fa;">
+
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        Add a New Todo
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" id="title" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" rows="3" name="description" id="description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="priority">Priority</label>
+            <select class="form-control" name="priority" id="priority">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Add New Todo</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
